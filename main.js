@@ -6,6 +6,7 @@
    Cite:
    Marriott gameengine, assetmanager
    Inspiration for project: http://pages.cs.wisc.edu/~elloyd/cs540Project/eric/elloyd-waves.html#LINKS 
+        - did not use code, just read article to get an idea of how the simulation works.
 */
 
 var pondArray = [];
@@ -29,7 +30,7 @@ Water.prototype.update = function () {
     this.position += this.velocity;
     let neighborAvg = getNeighborsAvg(this.id);
     let changePosition = neighborAvg - this.position;
-    let c = 0.002;
+    let c = 0.003;
     this.velocity += changePosition * c;    
 
     Entity.prototype.update.call(this);
@@ -104,7 +105,7 @@ ASSET_MANAGER.downloadAll(function () {
     for (var i = start; i <= end; i += radius) {
         pondArray[pondIndex] = [];
 
-        for (var j = start; j <= end; j += radius) {            //Add pond Array into Circle object
+        for (var j = start; j <= end; j += radius) {           
             let circle = new Water(gameEngine);
             circle.x = i;
             circle.y = j;
@@ -118,10 +119,15 @@ ASSET_MANAGER.downloadAll(function () {
 
     // Start the wave by picking a spot in pondArray and setting it to 1 or -1. 
     // Maybe have user set values. Also have slider that controls speed.     
-    let pebble = { x: Math.round(pondArray.length / 4), y: Math.round(pondArray.length / 4) };
+
+    let xPos = Math.round(Math.random(1) * pondArray.length - 2);
+    let yPos = Math.round(Math.random(1) * pondArray.length - 2);
+    pondArray[xPos][yPos].position = -1;
+
+    // let pebble = { x: Math.round(pondArray.length / 4), y: Math.round(pondArray.length / 4) };
     // pondArray[pebble.x][pebble.y].position = 1;
     // pondArray[pebble.x*2][pebble.y*2].position = -1;
-    pondArray[1][1].position = -1;
+    // pondArray[1][1].position = -1;
     // pondArray[pondArray.length-2][pondArray.length-2].position = -1;
 
     gameEngine.pondArray = pondArray;

@@ -1,7 +1,6 @@
 /*
    Ben Yuen
-   Computational Worlds
-   Pond Simulator
+   Computational Worlds: Pond Simulator
    3/2/2019
 
    Cite:
@@ -11,7 +10,7 @@
 
 var pondArray = [];
 
-function Circle(game) {
+function Water(game) {
     this.id = 0;
     this.radius = 10;
     this.position = 0;
@@ -22,10 +21,10 @@ function Circle(game) {
     Entity.call(this, game, this.x, this.y);
 };
 
-Circle.prototype = new Entity();
-Circle.prototype.constructor = Circle;
+Water.prototype = new Entity();
+Water.prototype.constructor = Water;
 
-Circle.prototype.update = function () {    
+Water.prototype.update = function () {    
 
     this.position += this.velocity;
     let neighborAvg = getNeighborsAvg(this.id);
@@ -57,7 +56,7 @@ function isEdge(i, j) {
     return i == 0 || j == 0 || i == pondArray.length - 1 || j == pondArray.length - 1;
 }
 
-Circle.prototype.getColor = function () {
+Water.prototype.getColor = function () {
     if (this.position === 0) {      //red
         return this.colorsArr[0];
     } else if (this.position < 0) {     //green
@@ -67,7 +66,7 @@ Circle.prototype.getColor = function () {
     }
 }
 
-Circle.prototype.draw = function (ctx) {
+Water.prototype.draw = function (ctx) {
     ctx.beginPath();
 
     ctx.fillStyle = this.getColor();
@@ -106,7 +105,7 @@ ASSET_MANAGER.downloadAll(function () {
         pondArray[pondIndex] = [];
 
         for (var j = start; j <= end; j += radius) {            //Add pond Array into Circle object
-            let circle = new Circle(gameEngine);
+            let circle = new Water(gameEngine);
             circle.x = i;
             circle.y = j;
             circle.id = id;

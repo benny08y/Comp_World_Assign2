@@ -36,20 +36,10 @@ Circle.prototype.constructor = Circle;
 Circle.prototype.update = function () {    
 
     this.position += this.velocity;
-
-    //    get the position of my eight bordering neighbor "particles"
-    //    calculate the average of these values, and set this value to goalPos
-    let goalPosition = getNeighborsAvg(this.id);
-    // console.log(goalPosition);
-
-    //    set dPos (change in position) to the goalPos - pos
-    let dPosition = goalPosition - this.position;
-
-    //    set our velocity to velocity + dPos * c, where c is a "stiffness" constant
-    let c = 0.25;
-    this.velocity += dPosition * c;
-
-    
+    let neighborAvg = getNeighborsAvg(this.id);
+    let changePosition = neighborAvg - this.position;
+    let c = 0.002;
+    this.velocity += changePosition * c;    
 
     Entity.prototype.update.call(this);
 };
@@ -147,8 +137,10 @@ ASSET_MANAGER.downloadAll(function () {
     }
 
     let pebble = { x: Math.round(pondArray.length / 4), y: Math.round(pondArray.length / 4) };
-    // pondArray[pebble.x][pebble.y].position = -1;
-    pondArray[pebble.x*2][pebble.y*2].position = -1;
+    // pondArray[pebble.x][pebble.y].position = 1;
+    // pondArray[pebble.x*2][pebble.y*2].position = -1;
+    pondArray[1][1].position = -1;
+    pondArray[pondArray.length-2][pondArray.length-2].position = -1;
 
     gameEngine.pondArray = pondArray;
     // console.log(gameEngine.pondArray);

@@ -120,8 +120,8 @@ ASSET_MANAGER.downloadAll(function () {
     // Start the wave by picking a spot in pondArray and setting it to 1 or -1. 
     // Maybe have user set values. Also have slider that controls speed.     
 
-    let xPos = Math.round(Math.random(1) * pondArray.length - 2);
-    let yPos = Math.round(Math.random(1) * pondArray.length - 2);
+    let xPos = Math.ceil(Math.random() * pondArray.length - 2) + 1;
+    let yPos = Math.round(Math.random() * pondArray.length - 2) + 1;
     pondArray[xPos][yPos].position = -1;
 
     // let pebble = { x: Math.round(pondArray.length / 4), y: Math.round(pondArray.length / 4) };

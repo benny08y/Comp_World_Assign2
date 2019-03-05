@@ -20,14 +20,6 @@ function Circle(game) {
     this.colorsArr = ["Red", "Green", "Blue", "White"];
     this.color = 2;
     Entity.call(this, game, this.x, this.y);
-
-    // this.velocity = { x: Math.random() * 1000, y: Math.random() * 1000 };
-    // var speed = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
-    // if (speed > maxSpeed) {
-    //     var ratio = maxSpeed / speed;
-    //     this.velocity.x *= ratio;
-    //     this.velocity.y *= ratio;
-    // }
 };
 
 Circle.prototype = new Entity();
@@ -93,8 +85,6 @@ var acceleration = 1000000;
 var maxSpeed = 200;
 
 
-
-
 var ASSET_MANAGER = new AssetManager();
 ASSET_MANAGER.queueDownload("./img/960px-Blank_Go_board.png");
 ASSET_MANAGER.queueDownload("./img/black.png");
@@ -127,20 +117,13 @@ ASSET_MANAGER.downloadAll(function () {
         pondIndex++;
     }
 
-    for (var i = 1; i < pondArray.length - 1; i++) {
-        for (var j = 1; j < pondArray.length - 1; j++) {
-            // if (pondArray[i][j].id == 942){
-                console.log(pondArray[i][j].id);
-            // }
-            
-        }
-    }
-
+    // Start the wave by picking a spot in pondArray and setting it to 1 or -1. 
+    // Maybe have user set values. Also have slider that controls speed.     
     let pebble = { x: Math.round(pondArray.length / 4), y: Math.round(pondArray.length / 4) };
     // pondArray[pebble.x][pebble.y].position = 1;
     // pondArray[pebble.x*2][pebble.y*2].position = -1;
     pondArray[1][1].position = -1;
-    pondArray[pondArray.length-2][pondArray.length-2].position = -1;
+    // pondArray[pondArray.length-2][pondArray.length-2].position = -1;
 
     gameEngine.pondArray = pondArray;
     // console.log(gameEngine.pondArray);

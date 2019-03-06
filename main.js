@@ -80,11 +80,6 @@ Water.prototype.draw = function (ctx) {
 
 
 // the "main" code begins here
-var friction = 1;
-var acceleration = 1000000;
-var maxSpeed = 200;
-
-
 var ASSET_MANAGER = new AssetManager();
 ASSET_MANAGER.queueDownload("./img/960px-Blank_Go_board.png");
 ASSET_MANAGER.queueDownload("./img/black.png");

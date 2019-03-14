@@ -37,7 +37,6 @@ function GameEngine() {
     this.wheel = null;
     this.surfaceWidth = null;
     this.surfaceHeight = null;
-    this.pondArray;
 }
 
 GameEngine.prototype.init = function (ctx) {

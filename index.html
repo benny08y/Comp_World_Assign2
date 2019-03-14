@@ -1,26 +1,35 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <title>Assignment 2 - Pond Simulator </title>
+    <title>Assignment 3 - Pond Simulator </title>
+
+    <script type="text/javascript" src="http://24.16.255.56:8888/socket.io/socket.io.js"></script>
+
     <script type="text/javascript" src="./assetmanager.js"></script>
     <script type="text/javascript" src="./gameengine.js"></script>
     <script type="text/javascript" src="./main.js"></script>
 
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div id="title">
+    <div id="title" style="margin-bottom: 20px">
         <font size="+1">
-        Pond Simulation: Each circle/water droplet changes its color based on the position 
-        value of its neighboring water droplets. Each droplet has an initial position value of 0 but a "pebble" is 
-        dropped in a random spot in the pond or a random 
-        droplet will have its position value changed which initiates the wave-like interaction between the 
-        water droplets.
-    </font>
+            Pond Simulation: Each circle/water droplet changes its color based on the position
+            value of its neighboring water droplets. Each droplet has an initial position value of 0 but a "pebble" is
+            dropped in a random spot in the pond or a random
+            droplet will have its position value changed which initiates the wave-like interaction between the
+            water droplets.
+        </font>
     </div>
+
+    <div id = "text" style="margin-top: 20px"></div>
+    <button id="save" type="button">Save</button>
+    <button id="load" type="button">Load</button>
 
     <canvas id="gameWorld" width="800" height="800" style="border: 1px solid white; background: black"></canvas>
 </body>
+
 </html>
